@@ -1,56 +1,18 @@
-import { Routes, Route } from "react-router-dom";
-import "./App.css";
-import Register from "./Components/Register";
-import Login from "./Components/Login";
-import PersonalDetails from "./pages/PaitentDash";
-import DoctorDashboard from "./pages/DoctorDash";
-
-import AllData from "./Components/Admin/AllData";
-import Slot from "./pages/Slots";
-import AdminPage from "./pages/AdminPage";
-import PersonalDetailsDocter from "./pages/PersonalDetails";
-import Home from "./Components/Home/Home/Home";
-import SearchDoctor from "./pages/SearchDoctor";
-import Appointments from "./pages/Appointments";
-import CreateAppointment from "./pages/CreateAppointment";
-import TodaysSchedule from "./Components/TodaysSchedule";
-import DocAppointments from "./pages/PaymentHistory";
-// import AddDoctor from "./Components/Admin/AddDoct";
-
-
-import User from "./pages/admin/user";
-import Doctor from "./pages/admin/doctor"
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Signup from "./components/Signup";
+import AdminLayout from "./layouts/Admin";
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/paitentDash" element={<PersonalDetails />} />
-        <Route path="/doctorDash" element={<DoctorDashboard />} />
-        <Route
-          path="/doctor/perosnaldetails"
-          element={<PersonalDetailsDocter />}
-        />
-        <Route path="/patient/searchdoctor" element={<SearchDoctor />} />
-        <Route path="/patient/appointments" element={<Appointments />} />
-        <Route
-          path="/patient/createappointment/:doctor"
-          element={<CreateAppointment />}
-        />
-        <Route path="/doctor" element={<TodaysSchedule />} />
-        <Route path="/doctor/payment-history" element={<DocAppointments />} />
-        {/* <Route path="/adminLogin" element={<AdminLogin />} /> */}
-        <Route path="/allAdminData" element={<AllData />} />
-        <Route path="/admin" element={<AdminPage />} />
-        {/* <Route path="/doctorAdmin" element={<AddDoctor />} /> */}
-        <Route path="/userList" element={<User />} />
-        <Route path="/doctorList" element={<Doctor />} />
+        <Route path="/" element={<Signup />} />
+        <Route path="/admin/*" element={<AdminLayout />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </div>
+    </BrowserRouter>
   );
-}
+}a
 
 export default App;
