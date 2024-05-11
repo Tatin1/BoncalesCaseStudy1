@@ -70,7 +70,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="content" style={{ background: "#252525", paddingTop: "50px", height: "105vh" }}> {/* Gray background color and padding top */}
+      <div className="content" style={{ background: "#252525", paddingTop: "100px", height: "101vh" }}> {/* Gray background color and padding top */}
         <div className="container-fluid">
           <h2 style={{ color: "#FFF" }}>Top Selling Product</h2> {/* Changed text color */}
           <Line
@@ -158,7 +158,7 @@ const Dashboard = () => {
                 }}
               />
             </div>
-            <div style={{ width: "50%" }}>
+            <div style={{ width: "55%" }}>
               <h2 style={{ color: "#000000" }}>Prices</h2> {/* Changed text color */}
               <Bar
                 data={barChartPricesData}
@@ -166,7 +166,7 @@ const Dashboard = () => {
                   title: {
                     display: true,
                     text: "Prices by Product",
-                    fontSize: 16,
+                    fontSize: 20,
                     color: "#FFF", // Added text color
                   },
                   legend: {

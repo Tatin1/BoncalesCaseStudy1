@@ -5,7 +5,7 @@ import { Nav } from "reactstrap";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
-import logo from "logo_van.png";
+import logo from "logo.png";
 
 var ps;
 

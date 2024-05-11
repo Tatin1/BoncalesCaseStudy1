@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 
 import kid from "assets/kid.png";
-import bg from "assets/bg.jpg";
+import bg from "assets/bg.png";
 
 function User() {
   const [user, setUser] = useState({});

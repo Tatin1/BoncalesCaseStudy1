@@ -14,7 +14,7 @@ function Footer(props) {
                 href="https://github.com/VanCarlo95"
                 target="_blank"
               >
-                InventoVate
+                Medicare
               </a>
             </li>
             <li>
