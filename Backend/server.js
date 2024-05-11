@@ -149,6 +149,6 @@ app.get('/chart-data', async (req, res) => {
 // }
 // run().catch(console.dir);
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`)
-// })
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
