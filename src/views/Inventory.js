@@ -219,7 +219,7 @@ function Inventory() {
             ))}
           </Row>
         )}
-        <Button className="btn btn-primary" onClick={toggleAddModal}>
+        <Button className="btn btn-info" onClick={toggleAddModal}>
           Add New Product
         </Button>
         <Modal isOpen={addModal} toggle={toggleAddModal}>
@@ -304,7 +304,7 @@ function Inventory() {
                   required
                 />
               </FormGroup>
-              <Button type="submit" className="btn btn-primary">
+              <Button type="submit" className="btn btn-warning">
                 Add Product
               </Button>
             </Form>

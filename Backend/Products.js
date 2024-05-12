@@ -8,6 +8,6 @@ const UserSchema = new mongoose.Schema({
   prodimage: String
 })
 
-const ProdModel = mongoose.model("cs1Prod", UserSchema)
+const ProdModel = mongoose.model("Product", UserSchema)
 
 module.exports = ProdModel

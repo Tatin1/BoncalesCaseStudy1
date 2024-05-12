@@ -172,7 +172,7 @@ function User() {
                   </Row>
                   <div className="text-center">
                     <Button
-                      className="btn btn-primary"
+                      className="btn btn-info"
                       onClick={handleUpdateUser}
                     >
                       Update Profile

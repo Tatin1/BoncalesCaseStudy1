@@ -48,7 +48,7 @@ function Sidebar(props) {
           target="_blank"
           rel="noreferrer"
         >
-          InventoVate
+          Medicare
         </a>
       </div>
       <div className="sidebar-wrapper" ref={sidebar}>

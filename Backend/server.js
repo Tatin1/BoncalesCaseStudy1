@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const UserModel = require('./User')
-const ProdModel = require('./Products')
+const User = require('./User')
+const Product = require('./Products')
 var cors = require('cors')
 
 const app = express()
@@ -19,27 +19,27 @@ mongoose.connect('mongodb://127.0.0.1:27017/CaseStudy',{
 
 //==============================================================
 app.get('/', (req, res) => {
-    UserModel.find()
+  User.find()
       .then(users => res.json(users))
       .catch(err => res.json(err))
 })
 
 app.get('/get/:id', (req, res) => {
   const id = req.params.id
-    UserModel.findById({_id: id })
+  User.findById({_id: id })
       .then(post => res.json(post))
       .catch(err => res.json(err))
 })
 
 app.post('/create',(req, res) =>{
-  UserModel.create(req.body)
+  User.create(req.body)
     .then(user => res.json(user))
     .catch(err => res.json(err))
 })
 
 app.put('/update/:id', (req, res) => {
   const id = req.params.id;
-  UserModel.findByIdAndUpdate({_id: id}, {
+  User.findByIdAndUpdate({_id: id}, {
     name: req.body.name,
     email: req.body.email,
     age: req.body.age
@@ -49,20 +49,20 @@ app.put('/update/:id', (req, res) => {
 
 app.delete('/deleteuser/:id', (req, res) => {
   const id = req.params.id;
-  UserModel.findByIdAndDelete({_id: id})
+  User.findByIdAndDelete({_id: id})
     .then(response => res.json(response))
     .catch(err => res.json(err))
 })
 
 app.post('/signup', (req, res) => {
-  UserModel.create(req.body)
+  User.create(req.body)
     .then(user => res.json(user))
     .catch(err => res.json(err))
 });
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  UserModel.findOne({ username, password })
+  User.findOne({ username, password })
     .then(user => {
       if (user) {
         res.json({ user, message: "Login Successful" });
@@ -75,27 +75,27 @@ app.post('/login', (req, res) => {
 
 //==============================================================
 app.get('/prod', (req, res) => {
-  ProdModel.find()
+  Product.find()
     .then(product => res.json(product))
     .catch(err => res.json(err))
 })
 
 app.get('/getprod/:id', (req, res) => {
   const id = req.params.id;
-  ProdModel.findById(id)
+  Product.findById(id)
     .then(product => res.json(product))
     .catch(err => res.status(404).json({ message: "Product not found" }));
 });
 
 app.post('/createprod',(req, res) =>{
-  ProdModel.create(req.body)
+  Product.create(req.body)
   .then(user => res.json(user))
   .catch(err => res.json(err))
 })
 
 app.put('/updateprod/:id', (req, res) => {
 const id = req.params.id;
-ProdModel.findByIdAndUpdate({_id: id}, {
+Product.findByIdAndUpdate({_id: id}, {
   productname: req.body.productname,
   quantity: req.body.quantity,
   sales: req.body.sales
@@ -105,7 +105,7 @@ ProdModel.findByIdAndUpdate({_id: id}, {
 
 app.delete('/deleteprod/:id', (req, res) => {
 const id = req.params.id;
-ProdModel.findByIdAndDelete({_id: id})
+Product.findByIdAndDelete({_id: id})
   .then(response => res.json(response))
   .catch(err => res.json(err))
 })
@@ -113,7 +113,7 @@ ProdModel.findByIdAndDelete({_id: id})
 // New endpoint for fetching chart data
 app.get('/chart-data', async (req, res) => {
   try {
-    const salesData = await ProdModel.find({}, { productname: 1, sales: 1, _id: 0 });
+    const salesData = await Product.find({}, { productname: 1, sales: 1, _id: 0 });
     const chartData = salesData.map((data) => ({
       month: data.productname,
       sales: parseFloat(data.sales),

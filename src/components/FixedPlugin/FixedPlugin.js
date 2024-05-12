@@ -54,13 +54,13 @@ function FixedPlugin(props) {
               />
               <span
                 className={
-                  props.bgColor === "orange"
-                    ? "badge filter badge-orange active"
-                    : "badge filter badge-orange"
+                  props.bgColor === "blue"
+                    ? "badge filter badge-blue active"
+                    : "badge filter badge-blue"
                 }
-                data-color="orange"
+                data-color="blue"
                 onClick={() => {
-                  props.handleColorClick("orange");
+                  props.handleColorClick("blue");
                 }}
               />
               <span
