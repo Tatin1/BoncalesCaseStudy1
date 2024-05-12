@@ -93,7 +93,21 @@ function Notifications() {
                     className="now-ui-icons ui-1_bell-53"
                   />
                   <span data-notify="message">
-                    Product Shipment to arrive in the next 24 days.
+                    Low Stocks!
+                  </span>
+                </Alert>
+                <Alert
+                  color="info"
+                  className="alert-with-icon"
+                  isOpen={true}
+                  toggle={() => {}}
+                >
+                  <span
+                    data-notify="icon"
+                    className="now-ui-icons ui-1_bell-53"
+                  />
+                  <span data-notify="message">
+                    Please reorder low stocks items.
                   </span>
                 </Alert>
                 <Alert
