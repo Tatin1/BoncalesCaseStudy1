@@ -33,7 +33,7 @@ function Sidebar(props) {
     <div className="sidebar" data-color={props.backgroundColor}>
       <div className="logo">
         <a
-          href="https://github.com/VanCarlo95"
+          href=""
           className="simple-text logo-mini"
           target="_blank"
           rel="noreferrer"
@@ -43,7 +43,7 @@ function Sidebar(props) {
           </div>
         </a>
         <a
-          href="https://github.com/VanCarlo95"
+          href=""
           className="simple-text logo-normal"
           target="_blank"
           rel="noreferrer"
