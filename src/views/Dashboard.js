@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar, Line, Scatter } from "react-chartjs-2";
 import axios from "axios";
-
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
@@ -34,10 +33,25 @@ const Dashboard = () => {
         pointHoverBorderWidth: 2,
         pointRadius: 5,
         fill: true,
-        backgroundColor: "rgba(0, 0, 0, 0.2)", // Black background color for line chart
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
         borderWidth: 2,
         tension: 0.4,
         data: sales,
+      },
+    ],
+  };
+
+  const scatterChartData = {
+    datasets: [
+      {
+        label: "Medicines",
+        data: products.map((item) => ({
+          x: parseInt(item.quantity),
+          y: parseFloat(item.price),
+        })),
+        backgroundColor: "rgba(255, 99, 132, 0.6)",
+        borderColor: "black",
+        borderWidth: 1,
       },
     ],
   };
@@ -48,7 +62,7 @@ const Dashboard = () => {
       {
         label: "Quantity",
         backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "rgba(75,192,192,1)",
+        borderColor: "black",
         borderWidth: 2,
         data: quantities,
       },
@@ -61,7 +75,7 @@ const Dashboard = () => {
       {
         label: "Price",
         backgroundColor: "rgba(255,99,132,0.2)",
-        borderColor: "rgba(255,99,132,1)",
+        borderColor: "black",
         borderWidth: 2,
         data: prices,
       },
@@ -70,144 +84,120 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="content" style={{ background: "#252525", paddingTop: "100px", height: "101vh" }}> {/* Gray background color and padding top */}
+      <div className="content" style={{ background: "black", paddingTop: "100px", height: "101vh" }}>
         <div className="container-fluid">
-          <h2 style={{ color: "#FFF" }}>Top Selling Product</h2> {/* Changed text color */}
+          <h2 style={{ color: "#FFF" }}>Sales by Product</h2>
           <Line
             data={lineChartData}
             options={{
-              title: {
-                display: true,
-                text: "Sales by Product",
-                fontSize: 20,
-                color: "#FFF", // Added text color
-              },
-              legend: {
-                display: true,
-                position: "right",
-                labels: {
-                  color: "#FFF", // Added text color
-                },
-              },
               scales: {
                 y: {
                   ticks: {
-                    fontColor: "rgba(255,255,255,0.4)",
-                    fontStyle: "bold",
-                    beginAtZero: true,
-                    maxTicksLimit: 5,
-                    padding: 10,
+                    color: "#FFF",
                   },
                   grid: {
-                    drawTicks: true,
-                    drawBorder: false,
-                    display: true,
                     color: "rgba(255,255,255,0.1)",
-                    zeroLineColor: "transparent",
                   },
                 },
-                x: {
-                  display: false, // Removed x-axis labels
-                },
               },
-              layout: {
-                padding: { left: 20, right: 20, top: 10, bottom: 0 },
+              plugins: {
+                legend: {
+                  labels: {
+                    color: "#FFF",
+                  },
+                },
               },
             }}
           />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{ width: "50%" }}>
-              <h2 style={{ color: "#000000" }}>Quantity</h2> {/* Changed text color */}
-              <Bar
-                data={barChartQuantitiesData}
+          
+          <div className="d-flex justify-content-between">
+            <div style={{ width: "33%" }}>
+            <h2 style={{ color: "black", marginTop: "40px" }}>Medicine Quantity and Price</h2>
+              <Scatter
+                data={scatterChartData}
                 options={{
-                  title: {
-                    display: true,
-                    text: "Quantity by Product",
-                    fontSize: 16,
-                    color: "#FFF", // Added text color
-                  },
-                  legend: {
-                    display: true,
-                    position: "right",
-                    labels: {
-                      color: "#FFF", // Added text color
-                    },
-                  },
                   scales: {
-                    y: {
+                    x: {
+                      type: "linear",
+                      position: "bottom",
                       ticks: {
-                        fontColor: "rgba(255,255,255,0.4)",
-                        fontStyle: "bold",
-                        beginAtZero: true,
-                        maxTicksLimit: 5,
-                        padding: 10,
+                        color: "black",
                       },
                       grid: {
-                        drawTicks: true,
-                        drawBorder: false,
-                        display: true,
                         color: "rgba(255,255,255,0.1)",
-                        zeroLineColor: "transparent",
                       },
                     },
-                    x: {
-                      display: false, // Removed x-axis labels
+                    y: {
+                      ticks: {
+                        color: "black",
+                      },
+                      grid: {
+                        color: "rgba(255,255,255,0.1)",
+                      },
+                    },
+                  },
+                  plugins: {
+                    legend: {
+                      labels: {
+                        color: "black",
+                      },
                     },
                   },
                 }}
               />
             </div>
-            <div style={{ width: "55%" }}>
-              <h2 style={{ color: "#000000" }}>Prices</h2> {/* Changed text color */}
+            <div style={{ width: "33%" }}>
+              <h3 style={{ color: "black", marginTop: "40px" }}>Quantity by Product</h3>
               <Bar
-                data={barChartPricesData}
+                data={barChartQuantitiesData}
                 options={{
-                  title: {
-                    display: true,
-                    text: "Prices by Product",
-                    fontSize: 20,
-                    color: "#FFF", // Added text color
-                  },
-                  legend: {
-                    display: true,
-                    position: "right",
-                    labels: {
-                      color: "#FFF", // Added text color
-                    },
-                  },
                   scales: {
                     y: {
                       ticks: {
-                        fontColor: "rgba(255,255,255,0.4)",
-                        fontStyle: "bold",
-                        beginAtZero: true,
-                        maxTicksLimit: 5,
-                        padding: 10,
+                        color: "black",
                       },
                       grid: {
-                        drawTicks: true,
-                        drawBorder: false,
-                        display: true,
                         color: "rgba(255,255,255,0.1)",
-                        zeroLineColor: "transparent",
                       },
                     },
-                    x: {
-                      display: false, // Removed x-axis labels
+                  },
+                  plugins: {
+                    legend: {
+                      labels: {
+                        color: "#FFF",
+                      },
                     },
                   },
-                  layout: {
-                    padding: { left: 20, right: 20, top: 10, bottom: 0 },
+                }}
+              />
+            </div>
+            <div style={{ width: "33%" }}>
+              <h2 style={{ color: "black", marginTop: "40px"}}>Prices by Product</h2>
+              <Bar
+                data={barChartPricesData}
+                options={{
+                  scales: {
+                    y: {
+                      ticks: {
+                        color: "black",
+                      },
+                      grid: {
+                        color: "rgba(255,255,255,0.1)",
+                      },
+                    },
+                  },
+                  plugins: {
+                    legend: {
+                      labels: {
+                        color: "black",
+                      },
+                    },
                   },
                 }}
               />
             </div>
           </div>
         </div>
-      </div>
-      <div className="content" style={{ background: "#FFFFFF", height: "50vh" }}> {/* White background color */}
-
       </div>
     </div>
   );

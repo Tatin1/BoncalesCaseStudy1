@@ -17,6 +17,7 @@ import {
   ModalHeader,
   ModalBody,
   Label,
+  Container,
 } from "reactstrap";
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
@@ -127,9 +128,10 @@ function Inventory() {
   return (
     <>
       <PanelHeader size="sm" />
-      <div className="content">
-        <Row> 
-          <Form>
+      <Container className="mt-4">
+        <Row>
+          <Col md={6}>
+            <Form>
               <FormGroup>
                 <InputGroup className="no-border">
                   <Input
@@ -145,14 +147,17 @@ function Inventory() {
                 </InputGroup>
               </FormGroup>
             </Form>
-          <Col md={12}>
-           
+          </Col>
+          <Col md={6} className="d-flex justify-content-end">
+            <Button className="btn btn-info" onClick={toggleAddModal}>
+              Add New Product
+            </Button>
           </Col>
         </Row>
         {filteredProducts.length > 0 && (
           <Row>
             {filteredProducts.map((product) => (
-              <Col md={4} key={product._id}>
+              <Col key={product._id} md={4}>
                 <Card>
                   <CardHeader>
                     <h5 className="text-center">{product.productname}</h5>
@@ -204,13 +209,13 @@ function Inventory() {
                           )
                         }
                       >
-                        <FiEdit />
+                        <FiEdit /> Edit
                       </Button>
                       <Button
                         color="danger"
                         onClick={() => handleDeleteProduct(product._id)}
                       >
-                        <FiTrash2 />
+                        <FiTrash2 /> Delete
                       </Button>
                     </div>
                   </CardBody>
@@ -219,99 +224,96 @@ function Inventory() {
             ))}
           </Row>
         )}
-        <Button className="btn btn-info" onClick={toggleAddModal}>
-          Add New Product
-        </Button>
-        <Modal isOpen={addModal} toggle={toggleAddModal}>
-          <ModalHeader toggle={toggleAddModal}>Add New Product</ModalHeader>
-          <ModalBody>
-            <Form onSubmit={handleCreateProduct}>
-              <FormGroup>
-                <Label for="productname">Product Name</Label>
-                <Input
-                  type="text"
-                  name="productname"
-                  id="productname"
-                  value={newProduct.productname}
-                  onChange={(e) =>
-                    setNewProduct({ ...newProduct, productname: e.target.value })
-                  }
-                  placeholder="Enter product name"
-                  className="form-control"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="quantity">Quantity</Label>
-                <Input
-                  type="number"
-                  name="quantity"
-                  id="quantity"
-                  value={newProduct.quantity}
-                  onChange={(e) =>
-                    setNewProduct({ ...newProduct, quantity: e.target.value })
-                  }
-                  placeholder="Enter quantity"
-                  className="form-control"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="price">Price</Label>
-                <Input
-                  type="text"
-                  name="price"
-                  id="price"
-                  value={newProduct.price}
-                  onChange={(e) =>
-                    setNewProduct({ ...newProduct, price: e.target.value })
-                  }
-                  placeholder="Enter price"
-                  className="form-control"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="sales">Sales</Label>
-                <Input
-                  type="text"
-                  name="sales"
-                  id="sales"
-                  value={newProduct.sales}
-                  onChange={(e) =>
-                    setNewProduct({ ...newProduct, sales: e.target.value })
-                  }
-                  placeholder="Enter sales"
-                  className="form-control"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="prodimage">Image URL</Label>
-                <Input
-                  type="text"
-                  name="prodimage"
-                  id="prodimage"
-                  value={newProduct.prodimage}
-                  onChange={(e) =>
-                    setNewProduct({
-                      ...newProduct,
-                      prodimage: e.target.value,
-                    })
-                  }
-                  placeholder="Enter image URL"
-                  className="form-control"
-                  required
-                />
-              </FormGroup>
-              <Button type="submit" className="btn btn-warning">
-                Add Product
-              </Button>
-            </Form>
-          </ModalBody>
-        </Modal>
-
-        {isEditing && (
+      </Container>
+      <Modal isOpen={addModal} toggle={toggleAddModal}>
+        <ModalHeader toggle={toggleAddModal}>Add New Product</ModalHeader>
+        <ModalBody>
+          <Form onSubmit={handleCreateProduct}>
+            <FormGroup>
+              <Label for="productname">Product Name</Label>
+              <Input
+                type="text"
+                name="productname"
+                id="productname"
+                value={newProduct.productname}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, productname: e.target.value })
+                }
+                placeholder="Enter product name"
+                className="form-control"
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="quantity">Quantity</Label>
+              <Input
+                type="number"
+                name="quantity"
+                id="quantity"
+                value={newProduct.quantity}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, quantity: e.target.value })
+                }
+                placeholder="Enter quantity"
+                className="form-control"
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="price">Price</Label>
+              <Input
+                type="text"
+                name="price"
+                id="price"
+                value={newProduct.price}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, price: e.target.value })
+                }
+                placeholder="Enter price"
+                className="form-control"
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="sales">Sales</Label>
+              <Input
+                type="text"
+                name="sales"
+                id="sales"
+                value={newProduct.sales}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, sales: e.target.value })
+                }
+                placeholder="Enter sales"
+                className="form-control"
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="prodimage">Image URL</Label>
+              <Input
+                type="text"
+                name="prodimage"
+                id="prodimage"
+                value={newProduct.prodimage}
+                onChange={(e) =>
+                  setNewProduct({
+                    ...newProduct,
+                    prodimage: e.target.value,
+                  })
+                }
+                placeholder="Enter image URL"
+                className="form-control"
+                required
+              />
+            </FormGroup>
+            <Button type="submit" className="btn btn-warning">
+              Add Product
+            </Button>
+          </Form>
+        </ModalBody>
+      </Modal>
+      {isEditing && (
           <Modal isOpen={editModal} toggle={toggleEditModal}>
             <ModalHeader toggle={toggleEditModal}>Edit Product</ModalHeader>
             <ModalBody>
@@ -403,7 +405,6 @@ function Inventory() {
             </ModalBody>
           </Modal>
         )}
-      </div>
     </>
   );
 }

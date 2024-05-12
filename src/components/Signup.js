@@ -100,12 +100,12 @@ function Signup() {
                   </select>
                 </div>
                 <div className="text-center">
-                <button className="btn btn-primary" type="submit">
+                <button className="btn btn-info" type="submit">
                   Sign Up
                 </button>
                 </div>
-                <div className="mt-3 text-center">
-                  Already Have an Account? <Link to="/login">Login</Link>
+                <div className="mt-3 text-center" style={{ color: "black"}}>
+                  Already Have an Account? <Link to="/login" style={{ color: "blue"}}>Login</Link>
                 </div>
               </form>
             </div>

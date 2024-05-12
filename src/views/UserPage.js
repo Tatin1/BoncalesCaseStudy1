@@ -190,7 +190,7 @@ function User() {
               <CardBody>
                 <div className="author">
                   <a
-                    href="https://github.com/VanCarlo95"
+                    href=""
                     onClick={(e) => e.preventDefault()}
                   >
                     <img
@@ -198,7 +198,7 @@ function User() {
                       className="avatar border-gray"
                       src={kid}
                     />
-                    <h5 className="title">
+                    <h5 className="title" style={{color: 'black'}}>
                       {user.firstname + " " + user.lastname}
                     </h5>
                   </a>
@@ -211,7 +211,7 @@ function User() {
                 <Button
                   className="btn-neutral btn-icon btn-round"
                   color="default"
-                  href="https://github.com/VanCarlo95"
+                  href=""
                   onClick={(e) => e.preventDefault()}
                   size="lg"
                 >
@@ -220,7 +220,7 @@ function User() {
                 <Button
                   className="btn-neutral btn-icon btn-round"
                   color="default"
-                  href="https://github.com/VanCarlo95"
+                  href=""
                   onClick={(e) => e.preventDefault()}
                   size="lg"
                 >
@@ -229,7 +229,7 @@ function User() {
                 <Button
                   className="btn-neutral btn-icon btn-round"
                   color="default"
-                  href="https://github.com/VanCarlo95"
+                  href=""
                   onClick={(e) => e.preventDefault()}
                   size="lg"
                 >

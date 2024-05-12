@@ -36,7 +36,7 @@ function Login() {
           <div className="card">
             <div className="card-header">
               <h2 className="text-center">Login</h2>
-              <p className="text-center">Welcome back!</p>
+              <h4 className="text-center">Welcome back!</h4>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
@@ -61,12 +61,12 @@ function Login() {
                   />
                 </div>
                 <div className="text-center">
-                  <button className="btn btn-primary" type="submit">
+                  <button className="btn btn-info" type="submit">
                     Login
                   </button>
                 </div>
-                <div className="mt-3 text-center">
-                  Don't Have an Account? <Link to="/signup">Sign Up</Link>
+                <div className="mt-3 text-center" style={{ color: "black"}}>
+                  Don't Have an Account? <Link to="/signup" style={{ color: "green"}}>Sign Up</Link>
                 </div>
               </form>
             </div>

@@ -7,7 +7,6 @@ import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 
 // core components
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 
 import routes from "routes.js";
@@ -56,7 +55,7 @@ function Admin(props) {
             element={<Navigate to="/admin/dashboard" replace />}
           />
         </Routes>
-        <Footer fluid />
+        
       </div>
     </div>
   );
