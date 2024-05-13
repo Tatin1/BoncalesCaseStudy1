@@ -46,15 +46,15 @@ const Dashboard = () => {
       {
         label: "Medicines",
         data: products.map((item) => ({
-          x: parseInt(item.quantity),
-          y: parseFloat(item.price),
+          x: parseInt(item.sales), // Use item.sales for x-axis (assuming sales corresponds to quantity)
+          y: parseFloat(item.price), // Use item.price for y-axis (assuming price remains the same)
         })),
         backgroundColor: "rgba(255, 99, 132, 0.6)",
         borderColor: "black",
         borderWidth: 1,
       },
     ],
-  };
+  };  
 
   const barChartQuantitiesData = {
     labels: productNames,
@@ -112,7 +112,7 @@ const Dashboard = () => {
           
           <div className="d-flex justify-content-between">
             <div style={{ width: "33%" }}>
-            <h2 style={{ color: "black", marginTop: "40px" }}>Medicine Quantity and Price</h2>
+            <h2 style={{ color: "black", marginTop: "40px" }}>Medicine Sales and Price</h2>
               <Scatter
                 data={scatterChartData}
                 options={{

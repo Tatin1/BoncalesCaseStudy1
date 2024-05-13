@@ -307,7 +307,7 @@ function Inventory() {
                 required
               />
             </FormGroup>
-            <Button type="submit" className="btn btn-warning">
+            <Button type="submit" className="btn btn-info">
               Add Product
             </Button>
           </Form>
